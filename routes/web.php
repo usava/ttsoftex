@@ -1,5 +1,6 @@
 <?php
 
+use App\MailChimp;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +13,13 @@
 */
 
 Route::get('/', function () {
+
+
+
+    $MailChimp = new MailChimp(env('MAILCHIMP_API_KEY'), env('MAILCHIMP_API_URL'));
+    dump($MailChimp->get('lists'));
+    dump($MailChimp->get('lists/4a5b12d128/members'));
+
     return view('welcome');
 });
+
