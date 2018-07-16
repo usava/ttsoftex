@@ -30,12 +30,18 @@ class MailChimp
      *
      * @throws \Exception
      */
-    public function __construct($api_key, $api_url = null)
+    public function __construct($api_key=null, $api_url = null)
     {
         if (!function_exists('curl_init') || !function_exists('curl_setopt')) {
             throw new \Exception("cURL support is required, but can't be found.");
         }
-        $this->api_key = $api_key;
+
+        if($api_key === null){
+            $this->api_key = env('MAILCHIMP_API_KEY');
+        }else{
+            $this->api_key = $api_key;
+        }
+
         if ($api_url === null) {
             $this->api_url = env('MAILCHIMP_API_URL');
             if (strpos($this->api_key, '-') === false) {

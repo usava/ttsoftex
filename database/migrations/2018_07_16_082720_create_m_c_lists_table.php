@@ -17,10 +17,10 @@ class CreateMCListsTable extends Migration
             $table->string('id');
             $table->unsignedInteger('web_id');
             $table->string('name');
-            $table->unsignedInteger('contact');
+            $table->json('contact');
             $table->string('permission_reminder');
             $table->boolean('use_archive_bar');
-            $table->unsignedInteger('campaign_defaults');
+            $table->json('campaign_defaults');
             $table->string('notify_on_subscribe');
             $table->string('notify_on_unsubscribe');
             $table->string('date_created');
@@ -30,13 +30,16 @@ class CreateMCListsTable extends Migration
             $table->string('subscribe_url_long');
             $table->string('beamer_address');
             $table->string('visibility');
+            $table->string('double_optin');
+            $table->string('marketing_permissions');
             $table->text('modules');
-            $table->unsignedInteger('stats');
+            $table->json('stats');
 
-            $table->foreign('contact')->references('id')->on('contacts');
-            $table->foreign('campaign_defaults')->references('id')->on('compaigns');
-            $table->foreign('stats')->references('id')->on('stats');
+            $table->primary('id');
         });
+
+
+
     }
 
     /**

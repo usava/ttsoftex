@@ -21,28 +21,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/lists', 'MCListsController@index')->name('lists');
 
 #Read MailChimp list
-Route::get('/lists/{list_id}', 'MCListsController@show')->name('list');
+Route::get('/lists/{mclist}', 'MCListsController@show')->name('list');
 
 #Create MailChimp list
 Route::post('/lists', 'MCListsController@store');
 
 #Update MailChimp list
-Route::patch('/lists/{list_id}', 'MCListsController@update');
+Route::patch('/lists/{mclist}', 'MCListsController@update');
 
 #Delete MailChimp list
-Route::delete('/lists/{list_id}', 'MCListsController@destroy');
+Route::delete('/lists/{mclist}', 'MCListsController@destroy');
 
 #Read all members from list
-Route::get('/lists/{list_id}/members', 'MCListMembersController@index');
+Route::get('/lists/{mclist}/members', 'MCListMembersController@index');
 
 #Read particular member from list
-Route::get('/lists/{list_id}/members/{subscriber_hash}', 'MCListMembersController@show');
+Route::get('/lists/{mclist}/members/{subscriber_hash}', 'MCListMembersController@show');
 
 #Create particular member from list
-Route::post('/lists/{list_id}/members', 'MCListMembersController@store');
+Route::post('/lists/{mclist}/members', 'MCListMembersController@store');
 
 #Update particular member from list
-Route::patch('/lists/{list_id}/members/{subscriber_hash}', 'MCListMembersController@update');
+Route::patch('/lists/{mclist}/members/{subscriber_hash}', 'MCListMembersController@update');
 
 #Delete particular member from list
-Route::delete('/lists/{list_id}/members/{subscriber_hash}', 'MCListMembersController@destro');
+Route::delete('/lists/{mclist}/members/{subscriber_hash}', 'MCListMembersController@destro');

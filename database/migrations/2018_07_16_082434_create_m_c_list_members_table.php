@@ -20,7 +20,7 @@ class CreateMCListMembersTable extends Migration
             $table->string('email_type');
             $table->string('status');
             $table->json('merge_fields');
-            $table->unsignedInteger('stats');
+            $table->json('stats');
             $table->string('ip_signup');
             $table->string('timestamp_signup');
             $table->string('ip_opt');
@@ -29,11 +29,8 @@ class CreateMCListMembersTable extends Migration
             $table->string('language');
             $table->boolean('vip');
             $table->string('email_client');
-            $table->unsignedInteger('location');
+            $table->json('location');
             $table->string('list_id');
-
-            $table->foreign('stats')->references('id')->on('member_stats');
-            $table->foreign('location')->references('id')->on('locations');
         });
     }
 
